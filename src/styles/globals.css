@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --vyno-accent: #00ff88;
+    --vyno-black: #050505;
+  }
+
+  body {
+    @apply bg-[#050505] text-white antialiased selection:bg-[#00FF88] selection:text-black;
+    /* Font pürüzsüzlüğü için */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Smooth Scrolling - Sayfa geçişlerini yumuşatır */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar - Foundation Capital tarzı ince ve minimalist */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ff88;
+  }
+
+  /* Tipografi Ayarları: Foundation Capital'ın o sıkı ve güçlü duruşu için */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tighter font-medium;
+    letter-spacing: -0.05em;
+  }
+
+  p {
+    @apply leading-relaxed;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Cam Efekti (Glassmorphism) Yardımcı Sınıfı */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient Yazı Efekti */
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #555555);
+  -webkit-background-clip: text;
+  background-clip: text; /* Bu satırı ekleyin */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Arka plandaki grid için hafif parlama */
+.neural-overlay {
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 136, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}

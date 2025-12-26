@@ -1,0 +1,433 @@
+=== VYNO AI ECOSYSTEM CODE SNAPSHOT ===
+Directory: C:\vyno_project\vyno-ecosystem
+
+
+--- FILE: src\App.js ---
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Ecosystem from "./components/Ecosystem";
+import NeuralGrid from "./components/NeuralGrid";
+import { motion, useScroll } from "framer-motion";
+
+function App() {
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <div className="bg-[#050505] min-h-screen selection:bg-[#00FF88] selection:text-black">
+      {/* Scroll Progress - Alman mühendislik hassasiyeti için [cite: 2025-12-06] */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-1 bg-[#00FF88] z-[60] origin-left"
+      />
+
+      <NeuralGrid />
+      <Navbar />
+
+      <main className="relative z-10">
+        <Hero />
+
+        {/* Vizyoner Geçiş - Swarm Intelligence Vurgusu [cite: 2025-12-16] */}
+        <section className="px-10 md:px-24 py-20">
+          <h2 className="text-zinc-800 text-[10vw] font-black uppercase tracking-tighter select-none leading-none">
+            The Swarm Evolved
+          </h2>
+        </section>
+
+        <Ecosystem />
+      </main>
+
+      <footer className="py-20 px-10 border-t border-white/5 text-center">
+        <p className="text-zinc-600 text-xs tracking-widest uppercase">
+          VYNO AI Ecosystem © 2025 | Engineering for a Sustainable Future
+        </p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+
+---------------------------
+
+--- FILE: src\index.js ---
+import React from "react";
+import ReactDOM from "react-dom/client";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<h1 style={{ color: "lime" }}>BAĞLANTI BAŞARILI</h1>);
+
+---------------------------
+
+--- FILE: src\components\Ecosystem.jsx ---
+import React from "react";
+import { motion } from "framer-motion";
+import { Car, Zap, Cpu } from "lucide-react"; // 'CPU' yerine 'Cpu' olarak düzeltildi
+
+const sectors = [
+  {
+    name: "Mobility",
+    desc: "ASIL-D compliant immunity for autonomous fleets and software-defined vehicles.",
+    icon: <Car />,
+  },
+  {
+    name: "Energy",
+    desc: "Resilient decentralized grid protection and self-healing energy clusters.",
+    icon: <Zap />,
+  },
+  {
+    name: "Industry",
+    desc: "Zero-downtime swarm logic for smart manufacturing and Industry 4.0 infrastructures.",
+    icon: <Cpu />, // 'Cpu' ikonu burada kullanıldı
+  },
+];
+
+export default function Ecosystem() {
+  return (
+    <section
+      id="ecosystem"
+      className="py-40 px-10 md:px-24 border-t border-white/5 bg-black/20 relative z-10"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-zinc-600 text-xs font-bold uppercase tracking-[0.4em] mb-16"
+        >
+          Universal Applicability
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 bg-white/5 border border-white/5">
+          {sectors.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
+              viewport={{ once: true }}
+              className="p-16 flex flex-col items-start transition-all bg-vyno-black group"
+            >
+              <div className="text-vyno-accent mb-12 group-hover:scale-110 transition-transform duration-500">
+                {s.icon}
+              </div>
+              <h3 className="text-white text-3xl font-bold mb-6 tracking-tight">
+                {s.name}
+              </h3>
+              <p className="text-zinc-500 font-light text-lg leading-relaxed">
+                {s.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+---------------------------
+
+--- FILE: src\components\Footer.jsx ---
+import { Shield } from 'lucide-react';
+
+export default function Footer() {
+  return (
+    <footer className="bg-vyno-black pt-32 pb-10 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
+          
+          {/* Brand Column */}
+          <div className="col-span-1 md:col-span-2 space-y-8">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-vyno-accent flex items-center justify-center rounded">
+                <Shield size={18} className="text-black" />
+              </div>
+              <span className="text-xl font-black tracking-tighter">VYNO BRAIN</span>
+            </div>
+            <p className="text-zinc-500 max-w-sm text-sm leading-relaxed font-light">
+              Engineering a decentralized neural future. Providing the digital immune system 
+              for autonomous systems across the global infrastructure.
+            </p>
+          </div>
+
+          {/* Sectors Column */}
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">The Ecosystem</h4>
+            <ul className="space-y-4 text-sm text-zinc-500 font-light">
+              <li className="hover:text-vyno-accent cursor-pointer transition">Mobility Systems</li>
+              <li className="hover:text-vyno-accent cursor-pointer transition">Energy Grids</li>
+              <li className="hover:text-vyno-accent cursor-pointer transition">Industrial Swarms</li>
+            </ul>
+          </div>
+
+          {/* Vision Column */}
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Our Vision</h4>
+            <ul className="space-y-4 text-sm text-zinc-500 font-light">
+              <li className="hover:text-vyno-accent cursor-pointer transition">German Engineering</li>
+              <li className="hover:text-vyno-accent cursor-pointer transition">Self-Evolution</li>
+              <li className="hover:text-vyno-accent cursor-pointer transition">Global Integrity</li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-zinc-700 text-[10px] uppercase tracking-widest font-medium">
+            © 2025 VYNO AI ECOSYSTEM. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex space-x-10 text-[10px] text-zinc-700 uppercase tracking-widest font-medium">
+            <span className="hover:text-white cursor-pointer transition">Privacy Policy</span>
+            <span className="hover:text-white cursor-pointer transition">Legal Audit</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+---------------------------
+
+--- FILE: src\components\Hero.jsx ---
+import { motion } from 'framer-motion';
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center px-10 md:px-24">
+      <motion.span 
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        className="text-vyno-accent font-mono text-xs tracking-[0.5em] uppercase mb-8"
+      >
+        Autonomous Swarm Intelligence
+      </motion.span>
+      
+      <motion.h1 
+        initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-6xl md:text-[140px] font-medium tracking-tighter leading-[0.9] text-white"
+      >
+        INFRASTRUCTURE <br /> 
+        <span className="text-zinc-700 italic">THAT HEALS</span>
+      </motion.h1>
+
+      <motion.p 
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="mt-12 max-w-2xl text-zinc-500 text-xl font-light leading-relaxed"
+      >
+        VYNO is a decentralized neural ecosystem providing self-healing immunity 
+        for mission-critical systems across Mobility, Energy, and Industry 4.0.
+      </motion.p>
+    </section>
+  );
+}
+---------------------------
+
+--- FILE: src\components\Navbar.jsx ---
+import { motion } from 'framer-motion';
+
+export default function Navbar() {
+  return (
+    <motion.nav 
+      initial={{ y: -100 }} animate={{ y: 0 }}
+      className="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-6 bg-black/50 backdrop-blur-md border-b border-white/5"
+    >
+      <div className="text-2xl font-black tracking-tighter text-white">
+        VYNO <span className="text-vyno-accent">BRAIN</span>
+      </div>
+      <div className="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-bold text-zinc-400">
+        <a href="#vision" className="hover:text-vyno-accent transition">Vision</a>
+        <a href="#ecosystem" className="hover:text-vyno-accent transition">Ecosystem</a>
+        <a href="#tech" className="hover:text-vyno-accent transition">Technology</a>
+      </div>
+      <button className="px-6 py-2 border border-vyno-accent text-vyno-accent text-[10px] font-bold uppercase tracking-widest hover:bg-vyno-accent hover:text-black transition-all duration-500">
+        Connect Core
+      </button>
+    </motion.nav>
+  );
+}
+---------------------------
+
+--- FILE: src\components\NeuralGrid.jsx ---
+import React from "react";
+import { motion } from "framer-motion";
+
+export default function NeuralGrid() {
+  return (
+    <div className="fixed inset-0 z-[-1] overflow-hidden bg-vyno-black">
+      {/* Dinamik Merkezi Parlama - Sistemin 'Bağışıklık' nabzını temsil eder */}
+      <motion.div
+        initial={{ opacity: 0.3 }}
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-vyno-accent/10 via-transparent to-transparent"
+      />
+
+      {/* Statik Teknolojik Grid Katmanı */}
+      <svg
+        className="h-full w-full opacity-[0.05]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="white"
+              strokeWidth="0.5"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+
+      {/* Alt Karartma - İçeriğin okunabilirliğini artırmak için */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-vyno-black/20 to-vyno-black" />
+    </div>
+  );
+}
+
+---------------------------
+
+--- FILE: src\components\Stats.jsx ---
+import { motion } from 'framer-motion';
+
+const stats = [
+  { label: "Neural Nodes", value: "10,000+", detail: "Distributed swarm agents" },
+  { label: "Integrity Level", value: "ASIL-D", detail: "Highest safety standard" },
+  { label: "Healing Speed", value: "<2ms", detail: "Real-time autonomous recovery" },
+  { label: "Deployment", value: "Global", detail: "Cross-sector infrastructure" }
+];
+
+export default function Stats() {
+  return (
+    <section id="tech" className="py-24 bg-vyno-black border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+          {stats.map((stat, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col space-y-2"
+            >
+              <span className="text-vyno-accent text-5xl font-black tracking-tighter">
+                {stat.value}
+              </span>
+              <span className="text-white text-xs font-bold uppercase tracking-widest">
+                {stat.label}
+              </span>
+              <span className="text-zinc-600 text-[10px] uppercase tracking-wider">
+                {stat.detail}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+---------------------------
+
+--- FILE: src\styles\globals.css ---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --vyno-accent: #00FF88;
+    --vyno-black: #050505;
+  }
+
+  body {
+    @apply bg-[#050505] text-white antialiased selection:bg-[#00FF88] selection:text-black;
+    /* Font pürüzsüzlüğü için */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Smooth Scrolling - Sayfa geçişlerini yumuşatır */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar - Foundation Capital tarzı ince ve minimalist */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00FF88;
+  }
+
+  /* Tipografi Ayarları: Foundation Capital'ın o sıkı ve güçlü duruşu için */
+  h1, h2, h3, h4 {
+    @apply tracking-tighter font-medium;
+    letter-spacing: -0.05em;
+  }
+
+  p {
+    @apply leading-relaxed;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Cam Efekti (Glassmorphism) Yardımcı Sınıfı */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient Yazı Efekti */
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #555555);
+  -webkit-background-clip: text;
+  background-clip: text; /* Bu satırı ekleyin */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Arka plandaki grid için hafif parlama */
+.neural-overlay {
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+---------------------------
+
+--- FILE: public\index.html ---
+import React from 'react'; import ReactDOM from 'react-dom/client'; import
+'./styles/globals.css'; import App from './App'; const root =
+ReactDOM.createRoot(document.getElementById('root')); root.render(
+<React.StrictMode>
+  <App />
+</React.StrictMode>
+);
+
+---------------------------
